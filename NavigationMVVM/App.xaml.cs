@@ -19,10 +19,11 @@ namespace NavigationMVVM
             services.AddSingleton<PeopleStore>();
             services.AddSingleton<NavigationStore>();
             services.AddSingleton<ModalNavigationStore>();
-
-            services.AddSingleton<INavigationService>(s => CreateHomeNavigationService(s));
+            //services.AddSingleton<INavigationService>(s => CreateHomeNavigationService(s));
+            services.AddSingleton<INavigationService>(s => CreateLoginNavigationService(s));
             services.AddSingleton<CloseModalNavigationService>();
 
+            
             services.AddTransient<HomeViewModel>(s => new HomeViewModel(CreateLoginNavigationService(s)));
             services.AddTransient<AccountViewModel>(s => new AccountViewModel(
                 s.GetRequiredService<AccountStore>(),
